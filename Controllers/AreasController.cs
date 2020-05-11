@@ -95,6 +95,37 @@ namespace Lab5.Controllers
                 return NotFound();
             }
 
+            var cosmetics = _context.Cosmetics.Where(c => c.Id_Area == id).ToList();
+            if(cosmetics.Count != 0)
+            {
+                foreach(var cosmetic in cosmetics)
+                {
+                    var products = _context.Products.Where(p => p.Id_Cosmetics == cosmetic.Id).ToList();
+                    if (products.Count != 0)
+                    {
+                        foreach(var product in products)
+                        {
+                            var productcolor = _context.ProductColors.Where(p => p.Id_Product == product.Id).ToList();
+                            if (productcolor.Count != 0)
+                            {
+                                foreach (var productt in productcolor)
+                                {
+                                    var prc = await _context.Products.FindAsync(productt.Id);
+                                    _context.Remove(prc);
+                                    await _context.SaveChangesAsync();
+                                }
+                            }
+                            var pr = await _context.Products.FindAsync(product.Id);
+                            _context.Remove(pr);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+                    var cs = await _context.Cosmetics.FindAsync(cosmetic.Id);
+                    _context.Remove(cs);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
             _context.Areas.Remove(area);
             await _context.SaveChangesAsync();
 

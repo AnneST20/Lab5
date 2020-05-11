@@ -95,6 +95,16 @@ namespace Lab5.Controllers
                 return NotFound();
             }
 
+            var productcolor = _context.ProductColors.Where(p => p.Id_Color == id).ToList();
+            if (productcolor.Count != 0)
+            {
+                foreach (var productt in productcolor)
+                {
+                    var pr = await _context.Products.FindAsync(productt.Id);
+                    _context.Remove(pr);
+                    await _context.SaveChangesAsync();
+                }
+            }
             _context.Colors.Remove(_Color);
             await _context.SaveChangesAsync();
 
