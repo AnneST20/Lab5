@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lab5.Models;
+using Microsoft.AspNetCore.Http.Connections;
+using System.Text.Json.Serialization;
 
 namespace Lab5.Controllers
 {
@@ -52,6 +54,9 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            AreaValid valid = new AreaValid(_context, area);
+            if (valid.Valid() == false) return BadRequest("Данная область приминения уже существует");
+
             _context.Entry(area).State = EntityState.Modified;
 
             try
@@ -79,6 +84,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<Area>> PostArea(Area area)
         {
+            AreaValid valid = new AreaValid(_context, area);
+            if (valid.Valid() == false) return BadRequest("Данная область приминения уже существует");
+
             _context.Areas.Add(area);
             await _context.SaveChangesAsync();
 

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Informatics-2020-Lab2 MakeUp</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Informatics-2020-Lab2 MakeUp</h1>
+    <h3>Add Country</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addCountry()">
+        <input type="text" id="add-name-country" placeholder="Новая страна">
+        <input type="submit" value="Добавить">
+    </form>
+
+    <div id="editCountries">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateCountry()">
+            <input type="hidden" id="edit-id-country">
+            <input type="text" id="edit-name-country">
+            <span></span>
+            <input type="submit" value="Сохранить">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Country</th>
+            <th>ID</th>
+        </tr>
+        <tbody id="countries"></tbody>
+    </table>
+
+    <script src="countries.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getCountries();
+    </script>
+</body>
+</html>
+

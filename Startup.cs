@@ -37,12 +37,16 @@ namespace Lab5
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Countries}/{action=GetCountries}/{id?}");
+                    pattern: "api/{controller=Firms}/{action=GetFirms}/{id?}");
             });
 
         }

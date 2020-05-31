@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XvjKSo8wwAlZozBexXxh+kI5g8AJKFBIaVzjHbiEFghg3QMpbOyDi9g3w3xn4/FphjakK7G3SwZVtSohCLOuUw==",
+  "dgSpecHash": "Osv9Nedt9FG9ahQazHfbGiWlEQtLseOUIp8SmlRjgzrNtkJJD1aG/ssOfXy9m4eCTk7dJpCClTC6nXMvWEhX5A==",
   "success": true,
   "projectFilePath": "C:\\My information\\2 course\\OOP\\Lab5\\Lab5.csproj",
   "expectedPackageFiles": [
@@ -169,7 +169,8 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Anne\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
   "logs": []
 }

@@ -52,6 +52,9 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            CountryValid valid = new CountryValid(_context, country);
+            if (valid.Valid() == false) return BadRequest("Данная страна уже существует");
+
             _context.Entry(country).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
+            CountryValid valid = new CountryValid(_context, country);
+            if (valid.Valid() == false) return BadRequest("Данная страна уже существует");
+
             _context.Countries.Add(country);
             await _context.SaveChangesAsync();
 

@@ -52,6 +52,9 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            ColorValid valid = new ColorValid(_context, _Color);
+            if (valid.Valid() == false) return BadRequest("Данный цвет уже существует");
+
             _context.Entry(_Color).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<_Color>> Post_Color(_Color _Color)
         {
+            ColorValid valid = new ColorValid(_context, _Color);
+            if (valid.Valid() == false) return BadRequest("Данный цвет уже существует");
+
             _context.Colors.Add(_Color);
             await _context.SaveChangesAsync();
 

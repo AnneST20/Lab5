@@ -18,7 +18,6 @@ namespace Lab5.Models
         [Required]
         public int Id_Country { get; set; }
         [Required(ErrorMessage = "Это поле не может быть пустым")]
-        [RegularExpression(@"^[А-ЯЭЪЮ]+[а-яэюъА-ЯЮЭЪ'\s]*$")]
         [Display(Name = "Название")]
         public string Name { get; set; }
 

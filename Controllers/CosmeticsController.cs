@@ -52,6 +52,9 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            CosmeticValid valid = new CosmeticValid(_context, cosmetic);
+            if (valid.Valid() == false) return BadRequest("Данное косметичсекое средство уже существует");
+
             _context.Entry(cosmetic).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<Cosmetic>> PostCosmetic(Cosmetic cosmetic)
         {
+            CosmeticValid valid = new CosmeticValid(_context, cosmetic);
+            if (valid.Valid() == false) return BadRequest("Данное косметичсекое средство уже существует");
+
             _context.Cosmetics.Add(cosmetic);
             await _context.SaveChangesAsync();
 

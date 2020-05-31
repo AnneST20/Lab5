@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Informatics-2020-Lab2 MakeUp</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Informatics-2020-Lab2 MakeUp</h1>
+    <h3>Добавить фирму</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addFirm()">
+        <input type="text" id="add-name" placeholder="Название">
+        <input type="number" id="add-id_Country" placeholder="Страна">
+        <input type="submit" value="Добавить">
+        <a href="../Country.html">Посмотреть все страны</a>
+    </form>
+
+    <div id="editFirms">
+        <h3>Редактировать</h3>
+        <form action="javascript:void(0);" onsubmit="updateFirm()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-name">
+            <input type="number" id="edit-id_Country">
+            <span></span>
+            <input type="submit" value="Сохранить">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+        <dialog>
+            <p>Это окно, которое сделано на html5 и javascript</p>
+            <button id="close">Закрыть</button>
+        </dialog>
+        <button id="show">Открыть всплывающее окно!</button>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+        </tr>
+        <tbody id="firms"></tbody>
+    </table>
+
+    <script src="js/firms.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getFirms();
+    </script>
+</body>
+</html>
+
+<script type=text/javascript>
+    var dialog = document.querySelector('dialog');
+    document.querySelector('#show').onclick = function () {
+        dialog.showModal();
+    };
+    document.querySelector('#close').onclick = function () {
+        dialog.close();
+    };
+</script>

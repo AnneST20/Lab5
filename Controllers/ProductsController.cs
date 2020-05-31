@@ -52,6 +52,9 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            ProductValid valid = new ProductValid(_context, product);
+            if (valid.Valid() == false) return BadRequest("Данное косметическое средство в этой фирме уже существует");
+
             _context.Entry(product).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
+            ProductValid valid = new ProductValid(_context, product);
+            if (valid.Valid() == false) return BadRequest("Данное косметическое средство в этой фирме уже существует");
+
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 

@@ -52,6 +52,10 @@ namespace Lab5.Controllers
                 return BadRequest();
             }
 
+            FirmValid valid = new FirmValid(_context, firm);
+            if (valid.Valid() == false) return BadRequest("Данная фирма уже существует");
+            
+
             _context.Entry(firm).State = EntityState.Modified;
 
             try
@@ -79,6 +83,9 @@ namespace Lab5.Controllers
         [HttpPost]
         public async Task<ActionResult<Firm>> PostFirm(Firm firm)
         {
+            FirmValid valid = new FirmValid(_context, firm);
+            if (valid.Valid() == false) return BadRequest("Данная фирма уже существует");
+
             _context.Firms.Add(firm);
             await _context.SaveChangesAsync();
 
